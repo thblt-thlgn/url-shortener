@@ -21,7 +21,9 @@
     "removeComments": true,
     "paths": {
       "@ts": ["src/ts"],
-      "@config/*": ["src/config/*"]
+      "@config/*": ["src/config/*"],
+      "@models": ["src/models"],
+      "@repositories": ["src/repositories"]
     }
   },
   "include": ["src/**/*.ts"]

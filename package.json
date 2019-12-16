@@ -12,7 +12,8 @@
     "start": "node dist/index.js",
     "start:clean": "npm-run-all clean build serve",
     "start:dev": "concurrently \"npm run watch:ts\" \"npm run serve\"",
-    "serve": "nodemon --watch dist/ dist/index.js"
+    "serve": "nodemon --watch dist/ dist/index.js",
+    "sequelize": "sequelize"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,8 @@
     "module-alias": "^2.2.2",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
+    "pg": "^7.14.0",
+    "pg-hstore": "^2.3.3",
     "rimraf": "^3.0.0",
     "sequelize": "^5.21.3",
     "sequelize-cli": "^5.5.1",
@@ -55,6 +58,8 @@
   },
   "_moduleAliases": {
     "@ts": "dist/ts",
-    "@config": "dist/config"
+    "@config": "dist/config",
+    "@models": "dist/models",
+    "@repositories": "dist/repositories"
   }
 }
