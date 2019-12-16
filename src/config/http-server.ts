@@ -3,6 +3,7 @@ import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import { Environment } from './environment';
 import { HTTPErrorHandler } from '@ts';
+import { httpRouter } from './http-router';
 
 export const httpServer = express();
 
@@ -13,7 +14,7 @@ const errorHandlerMiddleware: HTTPErrorHandler<Error> = (
   next,
 ): void => {
   console.error(err);
-  res.status(500).send();
+  res.sendStatus(500);
 };
 
 // SETUP
@@ -23,5 +24,5 @@ export default httpServer.listen(Environment.REST_PORT, () => {
 
 httpServer.use(helmet());
 httpServer.use(bodyParser.json());
-// httpServer.use(httpRouter.get());
+httpServer.use(httpRouter);
 httpServer.use(errorHandlerMiddleware);

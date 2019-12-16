@@ -23,7 +23,8 @@
       "@ts": ["src/ts"],
       "@config/*": ["src/config/*"],
       "@models": ["src/models"],
-      "@repositories": ["src/repositories"]
+      "@repositories": ["src/repositories"],
+      "@controllers/*": ["src/controllers/*"]
     }
   },
   "include": ["src/**/*.ts"]

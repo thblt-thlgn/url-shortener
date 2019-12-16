@@ -2,15 +2,15 @@ import { Table, Column, Model } from 'sequelize-typescript';
 
 @Table({
   underscored: true,
-  createdAt: true,
+  timestamps: true,
   updatedAt: false,
   deletedAt: false,
 })
 export class Url extends Model<Url> {
-  @Column
+  @Column({ unique: true })
   long: string;
 
-  @Column
+  @Column({ unique: true })
   short: string;
 }
 

@@ -5,7 +5,7 @@
   "rules": {
     "align": false,
     "ter-arrow-parens": false,
-    "no-console": true,
+    "no-console": false,
     "no-process-env": true
   },
   "rulesDirectory": []
