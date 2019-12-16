@@ -22,13 +22,18 @@ export namespace UrlRepository {
     );
   };
 
-  export const retrieve = async (short: string) => {
-    const url = await repository.findOne({ where: { short } });
+  export const retrieve = async (short: string, transaction?: Transaction) => {
+    const url = await repository.findOne({ transaction, where: { short } });
 
     if (!url) {
       throw new ResourceNotFoundError('URL');
     }
 
     return url;
+  };
+
+  export const list = async (transaction?: Transaction) => {
+    const urls = await repository.findAll({ transaction });
+    return urls;
   };
 }
