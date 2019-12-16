@@ -2,9 +2,9 @@ require('dotenv').config();
 
 module.exports = {
   default: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    username: process.env.DB_USERNAME || process.env.POSTGRES_USER,
+    password: process.env.DB_PASSWORD || process.env.POSTGRES_PASSWORD,
+    database: process.env.DB_NAME || process.env.POSTGRES_DB,
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
     pool: {
