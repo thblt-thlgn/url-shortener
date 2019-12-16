@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  postgres:
+    env_file:
+      - env/postgres.env
+
+  nginx:
+    build: nginx
+    container_name: url_shortener_nginx
+    depends_on:
+      - url-shortener
+    networks:
+      - private_network
+    ports:
+      - 80:80
+      - 443:443
+
+  url-shortener:
+    build: url-shortener
+    container_name: url_shortener
+    depends_on:
+      - postgres
+      - url-shortener-migration
+    networks:
+      - private_network
+    env_file:
+      - env/url-shortener.env
+
+  url-shortener-migration:
+    build: url-shortener
+    container_name: url_shortener_migration
+    command: npm run sequelize db:migrate -- --env=default
+    depends_on:
+      - postgres
+    networks:
+      - private_network
+    env_file:
+      - env/url-shortener.env
+      - env/postgres.env

@@ -22,9 +22,15 @@ export namespace Environment {
     10,
   );
 
-  export const DB_USERNAME = extractEnvironmentVariable('DB_USERNAME');
-  export const DB_PASSWORD = extractEnvironmentVariable('DB_PASSWORD');
-  export const DB_NAME = extractEnvironmentVariable('DB_NAME');
+  export const DB_USERNAME = extractEnvironmentVariable(
+    'DB_USERNAME',
+    'POSTGRES_USER',
+  );
+  export const DB_PASSWORD = extractEnvironmentVariable(
+    'DB_PASSWORD',
+    'POSTGRES_PASSWORD',
+  );
+  export const DB_NAME = extractEnvironmentVariable('DB_NAME', 'POSTGRES_DB');
   export const DB_HOST = extractEnvironmentVariable('DB_HOST');
   export const DB_DIALECT = extractEnvironmentVariable('DB_DIALECT') as Dialect;
   export const DB_POOL_MAX = parseInt(
