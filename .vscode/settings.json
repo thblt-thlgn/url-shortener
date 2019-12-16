@@ -1,0 +1,9 @@
+{
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "html.format.enable": false,
+  "html.format.wrapLineLength": 0
+}
