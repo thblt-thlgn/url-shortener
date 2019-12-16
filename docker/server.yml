@@ -6,7 +6,10 @@ services:
       - env/postgres.env
 
   nginx:
-    build: nginx
+    build:
+      context: ..
+      dockerfile: docker/nginx/Dockerfile
+    image: thblt-thlgn/nginx:latest
     container_name: url_shortener_nginx
     depends_on:
       - url-shortener
@@ -17,7 +20,7 @@ services:
       - 443:443
 
   url-shortener:
-    build: url-shortener
+    image: thblt-thlgn/url-shortener:latest
     container_name: url_shortener
     depends_on:
       - postgres
@@ -26,9 +29,13 @@ services:
       - private_network
     env_file:
       - env/url-shortener.env
+      - env/postgres.env
 
   url-shortener-migration:
-    build: url-shortener
+    build:
+      context: ..
+      dockerfile: docker/url-shortener/Dockerfile
+    image: thblt-thlgn/url-shortener:latest
     container_name: url_shortener_migration
     command: npm run sequelize db:migrate -- --env=default
     depends_on:
